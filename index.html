@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpador de Metadados de Vídeo Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Limpador de Metadados de Vídeo Pro</h1>
+            <p>Remova metadados e melhore a qualidade dos seus vídeos</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="drop-zone" id="dropZone">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p>Arraste e solte vídeos aqui</p>
+                    <p class="small">ou</p>
+                    <label for="fileInput" class="btn-select">Selecionar Arquivos</label>
+                    <input type="file" id="fileInput" accept="video/*" multiple hidden>
+                    <p class="formats">Formatos: MP4, MOV, AVI, MKV, WebM</p>
+                </div>
+            </div>
+
+            <div class="options-section" id="optionsSection" style="display: none;">
+                <h3>⚙️ Opções de Processamento</h3>
+                <div class="options-grid">
+                    <label class="option-card">
+                        <input type="checkbox" id="removeMetadata" checked>
+                        <div class="option-content">
+                            <span class="option-icon">🧹</span>
+                            <div>
+                                <strong>Remover Metadados</strong>
+                                <p>Remove todos os metadados do vídeo</p>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="option-card">
+                        <input type="checkbox" id="autoUpscale" checked>
+                        <div class="option-content">
+                            <span class="option-icon">📈</span>
+                            <div>
+                                <strong>Auto Upscale para 720p</strong>
+                                <p>Melhora vídeos abaixo de 720p automaticamente</p>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="option-card">
+                        <input type="checkbox" id="optimizeSize">
+                        <div class="option-content">
+                            <span class="option-icon">💾</span>
+                            <div>
+                                <strong>Otimizar Tamanho</strong>
+                                <p>Comprime o vídeo mantendo qualidade</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="files-list" id="filesList"></div>
+
+            <div class="actions" id="actions" style="display: none;">
+                <button id="processBtn" class="btn-process">
+                    <span>🚀 Processar Vídeos</span>
+                </button>
+                <button id="clearBtn" class="btn-clear">Limpar Lista</button>
+            </div>
+
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-info">
+                    <span id="progressText">Processando...</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="current-task" id="currentTask"></div>
+            </div>
+
+            <div class="log-section" id="logSection" style="display: none;">
+                <h3>📋 Log de Processamento</h3>
+                <div class="log-content" id="logContent"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>⚡ Processamento 100% local usando FFmpeg.wasm</p>
+            <p class="small">Seus vídeos nunca saem do seu dispositivo</p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.7/dist/umd/ffmpeg.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
